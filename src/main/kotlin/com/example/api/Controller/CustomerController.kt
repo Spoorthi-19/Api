@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-public class CustomerController(private var CService: CustomerService) {
+public class CustomerController(private var customerService: CustomerService) {
 
-    @PostMapping("/add")
+    @PostMapping
     fun addNewCustomer(@RequestParam name: String, @RequestParam phno: String, @RequestParam city: String): String{
-        CService.add(name,phno,city)
+        customerService.add(name,phno,city)
         return "Saved"
     }
 
-    @GetMapping("/list")
-    fun getCustomers() : MutableIterable<Customer>? {
-        return CService.get()
+    @GetMapping
+    fun getCustomers() : String {
+        return customerService.get().toString()
 
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping("/{id}")
     fun deleteCustomer(@RequestParam id:Int){
-        CService.delete(id)
+        customerService.delete(id)
     }
 }
