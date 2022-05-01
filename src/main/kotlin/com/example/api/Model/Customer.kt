@@ -1,25 +1,25 @@
 package com.example.api.Model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
+
 
 @Entity
 public class Customer(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private var id: Int,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private var customerId: Int,
     private var name: String,
     private var phno: String,
-    private var city: String
+    private var city: String,
+    @OneToMany(cascade = [CascadeType.REMOVE],mappedBy="customer", fetch = FetchType.LAZY)
+    val booking: List<Booking> =emptyList()
 )
 {
     fun getId(): Int {
-        return id
+        return customerId
     }
     fun setId(id: Int) {
-        this.id = id
+        this.customerId = id
     }
     fun getName(): String {
         return name

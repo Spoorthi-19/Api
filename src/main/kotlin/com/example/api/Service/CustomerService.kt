@@ -1,27 +1,33 @@
 package com.example.api.Service
-
+import java.util.*
 import com.example.api.Model.Customer
 import com.example.api.Repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 @Service
-public class CustomerService (private val CRepository: CustomerRepository){
-
-
-
-    public fun add(name: String, phno: String, city: String){
-        val n= Customer(0, "", "", "")
-        n.setName(name)
-        n.setPhno(phno)
-        n.setPhno(city)
-        CRepository.save(n)
+public class CustomerService (private val customerRepository: CustomerRepository){
+    fun addDetails(customer: Customer){
+        customerRepository.save(customer)
     }
 
-    public fun get(): MutableIterable<Customer>? {
-        return CRepository.findAll()
+    fun get(): MutableIterable<Customer>? {
+        return customerRepository.findAll()
     }
 
-    public fun delete(id: Int) {
-        CRepository.deleteById(id)
+    fun getCustomer(customerId: Int): Optional<Customer> {
+        return customerRepository.findById(customerId)
     }
+
+    fun updateCustomer(customerId: Int, customer: Customer) {
+        customer.setId(customerId)
+        customerRepository.save(customer)
+    }
+
+    fun deleteCustomer(customerId: Int){
+        customerRepository.deleteById(customerId)
+    }
+
+
+
+
 }
