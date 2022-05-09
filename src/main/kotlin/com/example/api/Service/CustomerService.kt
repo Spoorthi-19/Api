@@ -1,4 +1,5 @@
 package com.example.api.Service
+import com.example.api.Exception.EntityNotFoundException
 import java.util.*
 import com.example.api.Model.Customer
 import com.example.api.Repository.CustomerRepository
@@ -10,20 +11,29 @@ public class CustomerService (private val customerRepository: CustomerRepository
         customerRepository.save(customer)
     }
 
-    fun get(): MutableIterable<Customer>? {
-        return customerRepository.findAll()
+    fun get(): List<Customer>? {
+        return customerRepository.findAll().toList()
     }
 
-    fun getCustomer(customerId: Int): Optional<Customer> {
+    fun getCustomer(customerId: Int): Customer {
         return customerRepository.findById(customerId)
+            .orElseThrow{ EntityNotFoundException("Cannot find customer.")}
     }
 
     fun updateCustomer(customerId: Int, customer: Customer) {
+        val existingCustomer = customerRepository.findById(customerId)
+        if(existingCustomer.isEmpty){
+            throw EntityNotFoundException("customer not found.")
+        }
         customer.setId(customerId)
         customerRepository.save(customer)
     }
 
     fun deleteCustomer(customerId: Int){
+        val customer = customerRepository.findById(customerId)
+        if(customer.isEmpty) {
+            throw EntityNotFoundException("customer not found.")
+        }
         customerRepository.deleteById(customerId)
     }
 

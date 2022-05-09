@@ -18,8 +18,8 @@ public class Customer(
     fun getId(): Int {
         return customerId
     }
-    fun setId(id: Int) {
-        this.customerId = id
+    fun setId(customerId: Int) {
+        this.customerId = customerId
     }
     fun getName(): String {
         return name
