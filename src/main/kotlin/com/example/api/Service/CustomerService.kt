@@ -1,17 +1,17 @@
 package com.example.api.Service
 import com.example.api.Exception.EntityNotFoundException
-import java.util.*
+//import java.util.*
 import com.example.api.Model.Customer
 import com.example.api.Repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 @Service
-public class CustomerService (private val customerRepository: CustomerRepository){
+ class CustomerService (private val customerRepository: CustomerRepository){
     fun addDetails(customer: Customer){
         customerRepository.save(customer)
     }
 
-    fun get(): List<Customer>? {
+    fun get(): List<Customer> {
         return customerRepository.findAll().toList()
     }
 
@@ -25,7 +25,7 @@ public class CustomerService (private val customerRepository: CustomerRepository
         if(existingCustomer.isEmpty){
             throw EntityNotFoundException("customer not found.")
         }
-        customer.setId(customerId)
+        customer.customerId = customerId
         customerRepository.save(customer)
     }
 

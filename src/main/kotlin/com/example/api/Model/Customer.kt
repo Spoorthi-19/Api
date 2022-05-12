@@ -4,18 +4,18 @@ import javax.persistence.*
 
 
 @Entity
-public class Customer(
+data class Customer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var customerId: Int,
-    private var name: String,
-    private var phno: String,
-    private var city: String,
+    var customerId: Int,
+    private val name: String,
+    private val phno: String,
+    private val city: String,
     @OneToMany(cascade = [CascadeType.REMOVE],mappedBy="customer", fetch = FetchType.LAZY)
     val booking: List<Booking> =emptyList()
 )
 {
-    fun getId(): Int {
+    /*fun getId(): Int {
         return customerId
     }
     fun setId(customerId: Int) {
@@ -38,5 +38,5 @@ public class Customer(
     }
     fun setCity(city: String) {
         this.city = city
-    }
+    }*/
 }

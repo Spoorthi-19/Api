@@ -1,5 +1,5 @@
 package com.example.api.Service
-import com.example.api.*
+//import com.example.api.*
 import com.example.api.Controller.request.BookingRequest
 import com.example.api.Model.Booking
 //import com.example.api.Model.BookingRequest
@@ -11,10 +11,10 @@ import java.util.*
 import javax.persistence.*
 
 @Service
-public class BookingService(private val customerRepository: CustomerRepository,
+ class BookingService(private val customerRepository: CustomerRepository,
                                 private val bookingRepository: BookingRepository) {
 
-    public fun addBooking(customerId: Int, book: BookingRequest) {
+     fun addBooking(customerId: Int, book: BookingRequest) {
         val customer = customerRepository.findById(customerId)
         if(customer.isEmpty){
             throw EntityNotFoundException("customer not found.")
@@ -32,22 +32,22 @@ public class BookingService(private val customerRepository: CustomerRepository,
 
         }
 
-    public fun getBooking(customerId: Int,id: Int): Booking {
+     fun getBooking(customerId: Int,id: Int): Booking {
         val customer = customerRepository.findById(customerId)
         if(customer.isEmpty){
             throw EntityNotFoundException("customer not found.")
         }
-        return bookingRepository.findByCustomerCustomerIdId(customerId,id)
+        return bookingRepository.findByCustomerCustomerIdAndId(customerId,id)
             .orElseThrow{ EntityNotFoundException("Booking not found.")}
     }
 
 
-            public fun deleteBooking(customerId: Int,id: Int): Optional<Booking> {
+             fun deleteBooking(customerId: Int,id: Int): Optional<Booking> {
                 val customer= customerRepository.findById(customerId)
                 if(customer.isEmpty){
                     throw EntityNotFoundException("customer not found.")
                 }
-               return bookingRepository.deleteByCustomerCustomerIdId(customerId,id)
+               return bookingRepository.deleteById(customerId,id)
         }
 
 

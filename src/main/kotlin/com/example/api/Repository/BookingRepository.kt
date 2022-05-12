@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository
 import java.util.Optional
 
 @Repository
-public interface BookingRepository: CrudRepository<Booking, Int> {
+ interface BookingRepository: CrudRepository<Booking, Int> {
 
-    fun deleteByCustomerCustomerIdId(customerId: Int, id: Int):Optional<Booking>
-    fun findByCustomerCustomerIdId(customerId: Int, id: Int):Optional<Booking>
+    fun deleteById(customerId: Int, id: Int):Optional<Booking>
+    fun findByCustomerCustomerIdAndId(customerId: Int, id: Int):Optional<Booking>
 
 }
 

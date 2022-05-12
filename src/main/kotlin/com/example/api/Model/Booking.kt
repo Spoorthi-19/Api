@@ -4,13 +4,13 @@ import javax.persistence.*
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
-public class Booking(
+ class Booking(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int,
+    val id: Int,
     val Name: String,
-    var date: Date,
-    var room: String,
+    val date: Date,
+    val room: String,
     @ManyToOne(cascade=[CascadeType.ALL],optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="cId", referencedColumnName = "customerId")
     @JsonIgnore
