@@ -4,7 +4,7 @@ import javax.persistence.*
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
- class Booking(
+ data class Booking(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,

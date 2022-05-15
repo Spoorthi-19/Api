@@ -8,7 +8,7 @@ import org.springframework.http.*
 
 
 @RestController
-class BookingController (private var bookingService: BookingService){
+class BookingController (private val bookingService: BookingService){
     @PostMapping("/{customerId}/booking")
     fun addBooking(@PathVariable customerId: Int, @RequestBody bookingRequest: BookingRequest): ResponseEntity<BookingRequest>{
         bookingService.addBooking(customerId,bookingRequest)

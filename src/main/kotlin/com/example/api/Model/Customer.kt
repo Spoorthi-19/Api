@@ -8,9 +8,9 @@ data class Customer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var customerId: Int,
-    private val name: String,
-    private val phno: String,
-    private val city: String,
+    val name: String,
+    val phno: String,
+    val city: String,
     @OneToMany(cascade = [CascadeType.REMOVE],mappedBy="customer", fetch = FetchType.LAZY)
     val booking: List<Booking> =emptyList()
 )

@@ -9,7 +9,7 @@ import java.util.Optional
 @Repository
  interface BookingRepository: CrudRepository<Booking, Int> {
 
-    fun deleteById(customerId: Int, id: Int):Optional<Booking>
+    //fun deleteById(id: Int):Optional<Booking>
     fun findByCustomerCustomerIdAndId(customerId: Int, id: Int):Optional<Booking>
 
 }

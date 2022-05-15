@@ -13,7 +13,7 @@ import org.springframework.http.*
 
 @RestController
 @RequestMapping("/customer")
- class CustomerController(private var customerService: CustomerService) {
+ class CustomerController(private val customerService: CustomerService) {
 
     @PostMapping
     fun addNewCustomer(@RequestBody customer: Customer ): ResponseEntity<Customer>{
