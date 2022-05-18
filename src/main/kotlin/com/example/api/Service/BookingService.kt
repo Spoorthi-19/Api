@@ -7,7 +7,6 @@ import com.example.api.Repository.BookingRepository
 //import com.example.api.Repository.BookingRequestRepository
 import com.example.api.Repository.CustomerRepository
 import org.springframework.stereotype.Service
-import java.util.*
 import javax.persistence.*
 
 @Service
