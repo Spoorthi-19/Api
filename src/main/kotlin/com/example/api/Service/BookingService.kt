@@ -41,13 +41,14 @@ import javax.persistence.*
     }
 
 
-             fun deleteBooking(customerId: Int,id: Int) {
-                val customer= customerRepository.findById(customerId)
-                if(customer.isEmpty){
-                    throw EntityNotFoundException("customer not found.")
-                }
-                bookingRepository.deleteById(id)
+    fun deleteBooking(customerId: Int,id: Int) {
+        val customer= customerRepository.findById(customerId)
+        if(customer.isEmpty){
+            throw EntityNotFoundException("customer not found.")
         }
+        bookingRepository.deleteById(id)
+    }
+
         fun updateBooking(customerId: Int,id: Int, book: BookingRequest){
         book.id=id
         val customer = customerRepository.findById(customerId)

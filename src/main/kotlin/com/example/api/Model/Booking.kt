@@ -1,5 +1,4 @@
 package com.example.api.Model
-import java.util.Date
 import javax.persistence.*
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -9,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
     val Name: String,
-    val date: Date,
+    val date: String,
     val room: String,
     @ManyToOne(cascade=[CascadeType.ALL],optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="cId", referencedColumnName = "customerId")
