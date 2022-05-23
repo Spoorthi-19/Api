@@ -1,6 +1,6 @@
-package com.example.api.Repository
+package com.example.api.repository
 
-import com.example.api.Model.Booking
+import com.example.api.model.Booking
 //import com.example.api.Model.BookingRequest
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository

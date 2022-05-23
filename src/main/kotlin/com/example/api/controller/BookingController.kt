@@ -1,8 +1,8 @@
-package com.example.api.Controller
+package com.example.api.controller
 
-import com.example.api.Controller.request.BookingRequest
-import com.example.api.Model.Booking
-import com.example.api.Service.BookingService
+import com.example.api.controller.request.BookingRequest
+import com.example.api.model.Booking
+import com.example.api.service.BookingService
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.*
 
@@ -26,15 +26,13 @@ class BookingController (private val bookingService: BookingService) {
     @DeleteMapping("/{customerId}/booking/{id}")
     fun deleteBooking(
         @PathVariable customerId: Int,
-        @PathVariable id: Int,
-        @RequestBody bookingrequest: BookingRequest
-    ): ResponseEntity<BookingRequest> {
+        @PathVariable id: Int ){
         bookingService.deleteBooking(customerId, id)
-        return ResponseEntity.ok(bookingrequest)
+        //return ResponseEntity.ok(bookingrequest)
     }
 
     @PutMapping("/{customerId}/booking/{id}")
-    fun updatBooking(
+    fun updateBooking(
         @PathVariable customerId: Int,
         @PathVariable id: Int,
         @RequestBody bookingrequest: BookingRequest
@@ -42,5 +40,6 @@ class BookingController (private val bookingService: BookingService) {
         bookingService.updateBooking(customerId, id, bookingrequest)
         return ResponseEntity.ok(bookingrequest)
     }
+
 
 }

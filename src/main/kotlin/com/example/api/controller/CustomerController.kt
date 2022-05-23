@@ -1,12 +1,12 @@
-package com.example.api.Controller
+package com.example.api.controller
 
 //import com.example.api.*
 //import com.example.api.Controller.request.BookingRequest
 //import com.example.api.Model.Booking
 //import com.example.api.Model.BookingRequest
-import com.example.api.Model.Customer
+import com.example.api.model.Customer
 //import com.example.api.Service.BookingService
-import com.example.api.Service.CustomerService
+import com.example.api.service.CustomerService
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.*
 //import java.util.*

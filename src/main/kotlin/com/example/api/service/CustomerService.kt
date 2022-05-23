@@ -1,8 +1,8 @@
-package com.example.api.Service
-import com.example.api.Exception.EntityNotFoundException
+package com.example.api.service
+import com.example.api.exception.EntityNotFoundException
 //import java.util.*
-import com.example.api.Model.Customer
-import com.example.api.Repository.CustomerRepository
+import com.example.api.model.Customer
+import com.example.api.repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 @Service

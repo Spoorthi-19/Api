@@ -1,8 +1,8 @@
-package com.example.api.Service
+package com.example.api.service
 
-import com.example.api.Exception.EntityNotFoundException
-import com.example.api.Model.Customer
-import com.example.api.Repository.CustomerRepository
+import com.example.api.exception.EntityNotFoundException
+import com.example.api.model.Customer
+import com.example.api.repository.CustomerRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -87,4 +87,4 @@ internal class CustomerServiceTest{
     }
 
 }
-private val fakeCustomer=Customer(customerId = 0, name = "Jack", phno = "99999", city = "Bangalore")
+private val fakeCustomer=Customer(customerId = 1, name = "Jack", phno = "99999", city = "Bangalore")

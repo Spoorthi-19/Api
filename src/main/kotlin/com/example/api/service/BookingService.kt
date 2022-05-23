@@ -1,11 +1,11 @@
-package com.example.api.Service
+package com.example.api.service
 //import com.example.api.*
-import com.example.api.Controller.request.BookingRequest
-import com.example.api.Model.Booking
+import com.example.api.controller.request.BookingRequest
+import com.example.api.model.Booking
 //import com.example.api.Model.BookingRequest
-import com.example.api.Repository.BookingRepository
+import com.example.api.repository.BookingRepository
 //import com.example.api.Repository.BookingRequestRepository
-import com.example.api.Repository.CustomerRepository
+import com.example.api.repository.CustomerRepository
 import org.springframework.stereotype.Service
 import javax.persistence.*
 
