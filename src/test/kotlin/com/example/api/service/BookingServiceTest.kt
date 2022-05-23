@@ -56,6 +56,14 @@ internal class BookingServiceTest{
     }
 
     @Test
+    fun `Should throw 404 for getting non-existent booking of a customer`(){
+        every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.of(fakeCustomer.copy(customerId = 1))
+        every { bookingRepository.findByCustomerCustomerIdAndId(fakeCustomer.customerId, fakeBooking.id) } returns Optional.empty()
+
+        invoking { bookingService.getBooking(fakeCustomer.customerId, fakeBooking.id) } shouldThrow EntityNotFoundException("Booking not found")
+    }
+
+    @Test
     fun `Should delete a booking`(){
         every {customerRepository.existsById(fakeCustomer.customerId)} returns true
         every {bookingRepository.deleteById(fakeBooking.id)}returns Unit
@@ -70,6 +78,14 @@ internal class BookingServiceTest{
         every {customerRepository.existsById(fakeCustomer.customerId)} returns false
 
         invoking { bookingService.deleteBooking(fakeCustomer.customerId, fakeBooking.id) }shouldThrow EntityNotFoundException("Customer not found")
+    }
+
+    @Test
+    fun `Should throw 404 for deleting a non-existent booking`(){
+        every { customerRepository.existsById(fakeCustomer.customerId) } returns true
+        every { bookingRepository.existsById(fakeBooking.id) } returns false
+
+        invoking { bookingService.deleteBooking(fakeCustomer.customerId, fakeBooking.id) } shouldThrow EntityNotFoundException("Booking not found")
     }
 
     @Test
@@ -89,6 +105,15 @@ internal class BookingServiceTest{
         every { bookingRepository.findByCustomerCustomerIdAndId(fakeCustomer.customerId, fakeBooking.id) } returns Optional.of(fakeBooking)
         invoking { bookingService.updateBooking(fakeCustomer.customerId, fakeBooking.id, fakeBookingRequest)}shouldThrow EntityNotFoundException("Customer not found")
     }
+
+    @Test
+    fun`Should throw 404 for updating non-existent booking`(){
+        every {customerRepository.findById(fakeCustomer.customerId)} returns Optional.of(fakeCustomer)
+        every { bookingRepository.findByCustomerCustomerIdAndId(fakeCustomer.customerId, fakeBooking.id) } returns Optional.empty()
+
+        invoking { bookingService.updateBooking(fakeCustomer.customerId, fakeBooking.id, fakeBookingRequest) } shouldThrow EntityNotFoundException("Booking not found")
+    }
+
 
 }
 
