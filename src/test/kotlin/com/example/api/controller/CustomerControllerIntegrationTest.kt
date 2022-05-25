@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @ExtendWith(SpringExtension::class)
 @WebMvcTest(controllers = [CustomerController::class])
 @ContextConfiguration
-class QuestionnaireControllerIntegrationTest {
+class CustomerControllerIntegrationTest {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
