@@ -2,9 +2,6 @@ package com.example.api.controller
 
 import com.example.api.model.Customer
 import com.example.api.service.CustomerService
-
-import org.amshove.kluent.`should be equal to`
-import org.amshove.kluent.`should not be`
 import org.junit.jupiter.api.Test
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.*
