@@ -92,11 +92,11 @@ internal class BookingServiceTest{
     fun `Should update a booking`(){
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.of(fakeCustomer)
         every { bookingRepository.findByCustomerCustomerIdAndId(fakeCustomer.customerId, fakeBooking.id) }returns Optional.of(fakeBooking)
-        every { bookingRepository.save(fakeBooking.copy(Name = "Jen")) }returns fakeBooking.copy(Name = "Jen")
+        every { bookingRepository.save(fakeBooking.copy(name = "Jen")) }returns fakeBooking.copy(name = "Jen")
 
-        bookingService.updateBooking(fakeCustomer.customerId, fakeBooking.id, fakeBookingRequest.copy(Name = "Jen"))
+        bookingService.updateBooking(fakeCustomer.customerId, fakeBooking.id, fakeBookingRequest.copy(name = "Jen"))
 
-        verify { bookingRepository.save(fakeBooking.copy(Name = "Jen")) }
+        verify { bookingRepository.save(fakeBooking.copy(name = "Jen")) }
     }
 
     @Test
@@ -118,5 +118,5 @@ internal class BookingServiceTest{
 }
 
 private val fakeCustomer= Customer(customerId = 1, name = "Jack", phno = "99999", city = "Bangalore")
-private val fakeBooking=Booking(id = 1, Name = "John", date = "2022-05-18", room = "103", customer = fakeCustomer)
-private val fakeBookingRequest=BookingRequest(id = 1, Name = "John", date = "2022-05-18", room = "103")
+private val fakeBooking=Booking(id = 1, name = "John", date = "2022-05-18", room = "103", customer = fakeCustomer)
+private val fakeBookingRequest=BookingRequest(id = 1, name = "John", date = "2022-05-18", room = "103")

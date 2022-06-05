@@ -43,11 +43,11 @@ internal class BookingControllerTest{
 
     @Test
     fun `Should update a booking`(){
-        every { bookingService.updateBooking(1,1, fakeBookingRequest.copy(Name = "Jess")) }
+        every { bookingService.updateBooking(1,1, fakeBookingRequest.copy(name = "Jess")) }
 
-        val updatedBooking=bookingController.updateBooking(1,1, fakeBookingRequest.copy(Name = "Jess"))
+        val updatedBooking=bookingController.updateBooking(1,1, fakeBookingRequest.copy(name = "Jess"))
 
-        updatedBooking.body `should be equal to` fakeBookingRequest.copy(Name = "Jess")
+        updatedBooking.body `should be equal to` fakeBookingRequest.copy(name = "Jess")
 
     }
 
@@ -55,5 +55,5 @@ internal class BookingControllerTest{
 }
 
 private val fakeCustomer= Customer(customerId = 1, name = "Jack", phno = "99999", city = "Bangalore")
-private val fakeBooking=Booking(id = 1, Name = "John", date = "2022-05-18", room = "103", customer = fakeCustomer)
-private val fakeBookingRequest=BookingRequest(id = 1, Name = "John", date = "2022-05-18", room = "103")
+private val fakeBooking=Booking(id = 1, name = "John", date = "2022-05-18", room = "103", customer = fakeCustomer)
+private val fakeBookingRequest=BookingRequest(id = 1, name = "John", date = "2022-05-18", room = "103")

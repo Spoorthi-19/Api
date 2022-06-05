@@ -21,7 +21,7 @@ import javax.persistence.*
             bookingRepository.save(
                 Booking(
                     id = book.id,
-                    Name = book.Name,
+                    name = book.name,
                     date = book.date,
                     room = book.room,
                     customer = customer.get()
@@ -62,7 +62,7 @@ import javax.persistence.*
         bookingRepository.save(
             Booking(
                 id = book.id,
-                Name = book.Name,
+                name = book.name,
                 date = book.date,
                 room = book.room,
                 customer = customer.get()
