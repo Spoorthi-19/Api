@@ -1,5 +1,6 @@
 package com.example.api.Model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 
@@ -12,6 +13,7 @@ data class Customer(
     val phno: String,
     val city: String,
     @OneToMany(cascade = [CascadeType.REMOVE],mappedBy="customer", fetch = FetchType.LAZY)
+    @JsonIgnore
     val booking: List<Booking> =emptyList()
 )
 {

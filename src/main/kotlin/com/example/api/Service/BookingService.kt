@@ -1,13 +1,14 @@
 package com.example.api.Service
 //import com.example.api.*
 import com.example.api.Controller.request.BookingRequest
+import com.example.api.Exception.EntityNotFoundException
 import com.example.api.Model.Booking
 //import com.example.api.Model.BookingRequest
 import com.example.api.Repository.BookingRepository
 //import com.example.api.Repository.BookingRequestRepository
 import com.example.api.Repository.CustomerRepository
 import org.springframework.stereotype.Service
-import javax.persistence.*
+
 
 @Service
  class BookingService(private val customerRepository: CustomerRepository,
@@ -21,7 +22,7 @@ import javax.persistence.*
             bookingRepository.save(
                 Booking(
                     id = book.id,
-                    Name = book.Name,
+                    name = book.name,
                     date = book.date,
                     room = book.room,
                     customer = customer.get()
@@ -62,7 +63,7 @@ import javax.persistence.*
         bookingRepository.save(
             Booking(
                 id = book.id,
-                Name = book.Name,
+                name = book.name,
                 date = book.date,
                 room = book.room,
                 customer = customer.get()

@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore
  data class Booking(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
-    val Name: String,
+    var id: Int=0,
+    val name: String,
     val date: String,
     val room: String,
-    @ManyToOne(cascade=[CascadeType.ALL],optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="cId", referencedColumnName = "customerId")
     @JsonIgnore
     val customer: Customer
