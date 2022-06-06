@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service
         customerRepository.save(customer)
     }
 
-    fun deleteCustomer(customerId: Int){
+    fun deleteCustomer(customerId: Int, customer: Customer){
         val customer = customerRepository.findById(customerId)
         if(customer.isEmpty) {
             throw EntityNotFoundException("customer not found.")

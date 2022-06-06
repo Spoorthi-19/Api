@@ -38,8 +38,9 @@ import org.springframework.http.*
         return ResponseEntity.ok((customer))
     }
     @DeleteMapping("/{customerId}")
-    fun deleteCustomer(@PathVariable customerId:Int){
-        customerService.deleteCustomer(customerId)
+    fun deleteCustomer(@PathVariable customerId: Int, @RequestBody customer: Customer): ResponseEntity<Customer> {
+        customerService.deleteCustomer(customerId,customer)
+        return ResponseEntity.noContent().build()
     }
 
 //booking as a sub resource
