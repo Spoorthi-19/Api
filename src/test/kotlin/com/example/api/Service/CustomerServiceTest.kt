@@ -31,7 +31,7 @@ internal class CustomerServiceTest{
 
         val fetchedCustomers = customerService.get()
 
-        fetchedCustomers `should be equal to` fakeCustomer
+        fetchedCustomers `should be equal to` listOf(fakeCustomer)
     }
 
     @Test
@@ -44,10 +44,10 @@ internal class CustomerServiceTest{
     }
 
     @Test
-    fun `Should throw 404 for non-existent customer`(){
+    fun `Should throw an exception for non-existent customer`(){
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.empty()
 
-        invoking { customerService.getCustomer(fakeCustomer.customerId) } shouldThrow EntityNotFoundException("customer not found")
+        invoking { customerService.getCustomer(fakeCustomer.customerId) } shouldThrow EntityNotFoundException("Cannot find customer.")
     }
 
     @Test
@@ -61,10 +61,10 @@ internal class CustomerServiceTest{
     }
 
     @Test
-    fun `Should throw 404 for updating non-existent customer`(){
+    fun `Should throw an exception for updating non-existent customer`(){
         every{ customerRepository.findById(10) } returns Optional.empty()
 
-        invoking { customerService.updateCustomer(10, fakeCustomer.copy(phno ="855322" )) } shouldThrow EntityNotFoundException("Customer not found")
+        invoking { customerService.updateCustomer(10, fakeCustomer.copy(phno ="855322" )) } shouldThrow EntityNotFoundException("customer not found.")
     }
 
     @Test
@@ -79,10 +79,10 @@ internal class CustomerServiceTest{
     }
 
     @Test
-    fun `Should throw 404 for deleting non-existent customer`(){
+    fun `Should throw an exception for deleting non-existent customer`(){
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.empty()
 
-        invoking { customerService.deleteCustomer(fakeCustomer.customerId) } shouldThrow EntityNotFoundException("Customer not found")
+        invoking { customerService.deleteCustomer(fakeCustomer.customerId) } shouldThrow EntityNotFoundException("customer not found.")
 
     }
 
