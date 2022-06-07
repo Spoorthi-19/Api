@@ -1,12 +1,12 @@
-package com.example.api.Service
+package com.example.api.service
 
 
-import com.example.api.Controller.request.BookingRequest
-import com.example.api.Exception.EntityNotFoundException
-import com.example.api.Model.Booking
-import com.example.api.Model.Customer
-import com.example.api.Repository.BookingRepository
-import com.example.api.Repository.CustomerRepository
+import com.example.api.controller.request.BookingRequest
+import com.example.api.exception.EntityNotFoundException
+import com.example.api.model.Booking
+import com.example.api.model.Customer
+import com.example.api.repository.BookingRepository
+import com.example.api.repository.CustomerRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -49,7 +49,7 @@ internal class BookingServiceTest{
     }
 
     @Test
-    fun `Should throw an excption for getting the booking of non-existent customer`(){
+    fun `Should throw an exception for getting the booking of non-existent customer`(){
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.empty()
 
         invoking { bookingService.getBooking(fakeCustomer.customerId, fakeBooking.id) }  shouldThrow EntityNotFoundException("customer not found.")
@@ -71,7 +71,7 @@ internal class BookingServiceTest{
         //every {customerRepository.existsById(fakeCustomer.customerId)} returns false
         every { customerRepository.findById(fakeCustomer.customerId) }returns Optional.empty()
 
-        invoking { bookingService.deleteBooking(fakeCustomer.customerId, fakeBooking.id) }shouldThrow EntityNotFoundException("customer not found.")
+        invoking { bookingService.deleteBooking(fakeCustomer.customerId, fakeBooking.id) }shouldThrow EntityNotFoundException("booking not found.")
     }
 
     @Test

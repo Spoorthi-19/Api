@@ -1,4 +1,4 @@
-package com.example.api.Controller.request
+package com.example.api.controller.request
 
 data class BookingRequest(
     var id: Int=0,

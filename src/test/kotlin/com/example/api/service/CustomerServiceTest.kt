@@ -1,8 +1,8 @@
-package com.example.api.Service
+package com.example.api.service
 
-import com.example.api.Exception.EntityNotFoundException
-import com.example.api.Model.Customer
-import com.example.api.Repository.CustomerRepository
+import com.example.api.exception.EntityNotFoundException
+import com.example.api.model.Customer
+import com.example.api.repository.CustomerRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -72,7 +72,7 @@ internal class CustomerServiceTest{
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.of(fakeCustomer)
         every { customerRepository.deleteById(fakeCustomer.customerId) } returns Unit
 
-        customerService.deleteCustomer(fakeCustomer.customerId)
+        customerService.deleteCustomer(fakeCustomer.customerId, fakeCustomer)
 
         verify { customerRepository.deleteById(fakeCustomer.customerId) }
 
@@ -82,7 +82,7 @@ internal class CustomerServiceTest{
     fun `Should throw an exception for deleting non-existent customer`(){
         every { customerRepository.findById(fakeCustomer.customerId) } returns Optional.empty()
 
-        invoking { customerService.deleteCustomer(fakeCustomer.customerId) } shouldThrow EntityNotFoundException("customer not found.")
+        invoking { customerService.deleteCustomer(fakeCustomer.customerId, fakeCustomer) } shouldThrow EntityNotFoundException("customer not found.")
 
     }
 

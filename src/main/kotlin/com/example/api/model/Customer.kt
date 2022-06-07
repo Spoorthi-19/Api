@@ -1,4 +1,4 @@
-package com.example.api.Model
+package com.example.api.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
