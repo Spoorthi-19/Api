@@ -1,25 +1,27 @@
-package com.example.api.Model
+package com.example.api.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 
 @Entity
-public class Customer(
+data class Customer(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var customerId: Int,
-    private var name: String,
-    private var phno: String,
-    private var city: String,
+    var customerId: Int,
+    val name: String,
+    val phno: String,
+    val city: String,
     @OneToMany(cascade = [CascadeType.REMOVE],mappedBy="customer", fetch = FetchType.LAZY)
+    @JsonIgnore
     val booking: List<Booking> =emptyList()
 )
 {
-    fun getId(): Int {
+    /*fun getId(): Int {
         return customerId
     }
-    fun setId(id: Int) {
-        this.customerId = id
+    fun setId(customerId: Int) {
+        this.customerId = customerId
     }
     fun getName(): String {
         return name
@@ -38,5 +40,5 @@ public class Customer(
     }
     fun setCity(city: String) {
         this.city = city
-    }
+    }*/
 }

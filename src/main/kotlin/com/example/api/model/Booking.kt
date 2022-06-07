@@ -1,21 +1,25 @@
-package com.example.api.Model
-import java.util.Date
+package com.example.api.model
 import javax.persistence.*
+import com.fasterxml.jackson.annotation.JsonIgnore
 
 @Entity
-public class Booking(
+ data class Booking(
     @Id
-    private var id: Int,
-    private var Name: String,
-    private var date: Date,
-    private var room: String,
-    @ManyToOne(cascade=[CascadeType.ALL],optional = false, fetch = FetchType.LAZY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int=0,
+    val name: String,
+    val date: String,
+    val room: String,
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name="cId", referencedColumnName = "customerId")
-    private var employee: Customer
+    @JsonIgnore
+    val customer: Customer
 
 
 ) {
-    fun getId(): Int {
+   // private var customer: Customer
+
+   /* fun getId(): Int {
         return id
     }
 
@@ -38,15 +42,15 @@ public class Booking(
         this.room= room
     }
 
-    fun setCustomer(customer: Customer)
-    this.customer = customer
+    fun setCustomer(customer: Customer){
+        this.customer = customer
 }
 fun getCustomer(customer: Customer): Customer{
     return customer
 }
-
+*/
 }
-@Entity
+/*@Entity
 public class BookingRequest (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +58,4 @@ public class BookingRequest (
     var Name: String,
     var date: Date,
     var room: String
-){
-
-
-}
+){}*/
